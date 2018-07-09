@@ -5,14 +5,13 @@ const displayWeatherLocation = document.getElementById('displayWeather');
 
 
 var xmlhttp = new XMLHttpRequest();
-var url = "myTutorials.txt";
+var url = "http://localhost:3000/";
 
-xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-         console.log(JSON.parse(this.responseText));
-        
-    }
-};
+xmlhttp.open("POST", url, true);
+xmlhttp.send({
+    "city": "Brossard"
+});
+console.log(xmlhttp.responseText);
 
 
 
