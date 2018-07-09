@@ -4,14 +4,19 @@ const locationinput = document.getElementById('locationInput');
 const displayWeatherLocation = document.getElementById('displayWeather');
 
 
-var xmlhttp = new XMLHttpRequest();
-var url = "http://localhost:3000/";
+var xhr = new XMLHttpRequest();
+var url = "http://api.openweathermap.org/data/2.5/weather?q=Brossard&appid=5649a3f39b1975b1732986f61988a10c";
 
-xmlhttp.open("POST", url, true);
-xmlhttp.send({
-    "city": "Brossard"
-});
-console.log(xmlhttp.responseText);
+xhr.open("GET", url, true);
+xhr.send();
+xhr.onload = function () {
+    if (xhr.readyState === xhr.DONE) {
+        if (xhr.status === 200) {
+            console.log(xhr.response);
+            console.log(xhr.responseText);
+        }
+    }
+};
 
 
 
